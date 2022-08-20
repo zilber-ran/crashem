@@ -7,8 +7,10 @@ extends RigidBody2D
 var speed = 50
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_bounce(50)
 	pass # Replace with function body.
 
 func _launch(force : Vector2) -> void:
