@@ -4,6 +4,9 @@ signal vector_created(vector)
 
 export var maximum_length := 20
 
+
+var can_launch = true
+
 var touch_down := false
 var position_start := Vector2.ZERO
 var position_end := Vector2.ZERO
@@ -45,8 +48,9 @@ func _input(event) -> void:
 
 
 func _on_input_event(_viewport, event, _shape_idx) -> void:
-	
-	if event.is_action_pressed("ui_touch"):
-		touch_down = true
-		position_start = event.position
+	if can_launch:
+		
+		if event.is_action_pressed("ui_touch"):
+			touch_down = true
+			position_start = event.position
 		
