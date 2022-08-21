@@ -14,9 +14,9 @@ func _summon_enemy() -> void:
 func _ready():
 	pass # Replace with function body.
 
-func _on_input_event(_viewport, event, _shape_idx) -> void:
-	
-	if event.is_action_pressed("Space"):
+func _input(event):
+	if event.is_action_pressed("ui_select"):
+		print("space pressed")
 		_summon_enemy()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

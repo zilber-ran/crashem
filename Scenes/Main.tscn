@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://Scenes/Enemy_Factory.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=3]
 
@@ -11,3 +12,6 @@ scale = Vector2( 1.004, 0.463 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 147.586, 490.247 )
+
+[node name="Enemy_Factory" parent="." instance=ExtResource( 1 )]
+position = Vector2( 842.284, 88.0994 )
