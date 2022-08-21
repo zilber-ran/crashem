@@ -14,7 +14,7 @@ var parent = Node2D
 func _stop_slow() -> void:
 	cur_speed = get_linear_velocity()
 	
-	if cur_speed.length() <= stop_speed:
+	if stop_speed*0.8 <= cur_speed.length() && cur_speed.length() <= stop_speed:
 		set_linear_velocity(Vector2.ZERO)
 		VC.can_launch = true
 		
