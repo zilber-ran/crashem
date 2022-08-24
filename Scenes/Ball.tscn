@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 35.7917
+
+[sub_resource type="CurveTexture" id=2]
+
+[node name="Ball" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2( 56.6964, -210.407 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D"]
+texture = SubResource( 2 )
