@@ -9,6 +9,7 @@ extents = Vector2( 0.595244, 10 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 scale = Vector2( 50, 50 )
+collision_mask = 63
 mode = 1
 gravity_scale = 0.0
 

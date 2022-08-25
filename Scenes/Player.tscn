@@ -14,10 +14,14 @@ radius = 5.55176
 [node name="Player" type="Node2D"]
 
 [node name="Player RB2D" type="RigidBody2D" parent="."]
-position = Vector2( 200, -200 )
+collision_layer = 2
+collision_mask = 2
 physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
 script = ExtResource( 3 )
+
+[node name="VectorCreator" parent="Player RB2D" instance=ExtResource( 2 )]
+scale = Vector2( 7.5, 7.5 )
 
 [node name="Sprite" type="Sprite" parent="Player RB2D"]
 scale = Vector2( 0.102646, 0.102646 )
@@ -27,8 +31,5 @@ texture = ExtResource( 1 )
 scale = Vector2( 5, 5 )
 shape = SubResource( 2 )
 
-[node name="VectorCreator" parent="." instance=ExtResource( 2 )]
-scale = Vector2( 7.5, 7.5 )
-
-[connection signal="vector_created" from="VectorCreator" to="Player RB2D" method="launch"]
-[connection signal="vector_created" from="VectorCreator" to="Player RB2D" method="_launch"]
+[connection signal="vector_created" from="Player RB2D/VectorCreator" to="Player RB2D" method="launch"]
+[connection signal="vector_created" from="Player RB2D/VectorCreator" to="Player RB2D" method="_launch"]

@@ -28,6 +28,8 @@ ui_touch={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Balls"
 2d_physics/layer_4="Enemies"
+2d_physics/layer_5="Other"
+2d_physics/layer_6="UI"
 
 [physics]
 

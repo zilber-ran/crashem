@@ -23,8 +23,7 @@ func _process(delta):
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	 parent = get_parent()
-	 VC = parent.get_node("VectorCreator")
+	 VC = get_node("VectorCreator")
 	 # Replace with function body.
 
 func _launch(force : Vector2) -> void:

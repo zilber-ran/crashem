@@ -8,8 +8,9 @@ export var maximum_length := 20
 var can_launch = true
 
 var touch_down := false
-var position_start := Vector2.ZERO
-var position_end := Vector2.ZERO
+var position_start := self.position
+var position_end := self.position
+var position_hit = self.position
 
 var vector := Vector2.ZERO
 
@@ -17,20 +18,27 @@ func _ready() -> void:
 	connect("input_event", self, "_on_input_event")
 
 func _draw() -> void:
-	draw_line(position_start - global_position,
-	 (position_end - global_position), Color.blue,1)
-	
-	draw_line(position_start-global_position,
-	position_start-global_position+vector, Color.red, 1.5)
+	draw_line(position_hit,
+	position_hit, Color.green, 1.5)
 
 
 
 func _reset() -> void:
-	position_start = Vector2.ZERO
+	position_start = self.position
 	position_end = Vector2.ZERO
 	vector = Vector2.ZERO
 
 
+
+func _raycast() -> void:
+	var ray = get_node("RayCast2D")
+	ray.cast_to = position_start-position_end
+	ray.enabled = true
+	position_hit = ray.get_collision_point()
+	
+	
+	
+	
 func _input(event) -> void:
 	if not touch_down:
 		return
@@ -44,6 +52,7 @@ func _input(event) -> void:
 	if event is InputEventMouseMotion:
 		position_end = event.position
 		vector = -(position_end - position_start).clamped(maximum_length)
+		_raycast()
 		update()
 
 
