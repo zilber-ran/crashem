@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "SpawnFactory",
 "language": "GDScript",
-"path": "res://Scenes/Main.gd"
+"path": "res://Scripts/SpawnFactory.gd"
 } ]
 _global_script_class_icons={
 "SpawnFactory": ""
