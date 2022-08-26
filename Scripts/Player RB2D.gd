@@ -7,17 +7,20 @@ extends RigidBody2D
 var speed = 50
 
 var stop_speed = 100
-var cur_speed = Vector2.ZERO
+var curr_speed = Vector2.ZERO
 var VC = Node2D
 var parent = Node2D
 
 func _stop_slow() -> void:
-	cur_speed = get_linear_velocity()
+	curr_speed = abs(get_linear_velocity().length())
 	
-	if stop_speed*0.8 <= cur_speed.length() && cur_speed.length() <= stop_speed:
+	print("speed: {}".format([curr_speed], "{}"))
+	if curr_speed>0 and curr_speed <= stop_speed:
+		print("[STOP-PLAYER]")
 		set_linear_velocity(Vector2.ZERO)
 		VC.can_launch = true
-		
+	else: 
+		print("[CONT-PLAYER]")
 func _process(delta):
 	_stop_slow()
 	

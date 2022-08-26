@@ -22,6 +22,7 @@ script = ExtResource( 3 )
 
 [node name="VectorCreator" parent="Player RB2D" instance=ExtResource( 2 )]
 scale = Vector2( 7.5, 7.5 )
+linear_damp = 1.0
 
 [node name="Sprite" type="Sprite" parent="Player RB2D"]
 scale = Vector2( 0.102646, 0.102646 )
