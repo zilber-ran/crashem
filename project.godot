@@ -10,9 +10,14 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Object",
-"class": "InputAdapter",
+"class": "InputAdaptor",
 "language": "GDScript",
-"path": "res://Scripts/Player(new) RB2D.gd"
+"path": "res://Scripts/InputAdaptor.gd"
+}, {
+"base": "InputAdaptor",
+"class": "PlayerInput",
+"language": "GDScript",
+"path": "res://Scripts/player_input.gd"
 }, {
 "base": "Node2D",
 "class": "SpawnFactory",
@@ -20,7 +25,8 @@ _global_script_classes=[ {
 "path": "res://Scripts/SpawnFactory.gd"
 } ]
 _global_script_class_icons={
-"InputAdapter": "",
+"InputAdaptor": "",
+"PlayerInput": "",
 "SpawnFactory": ""
 }
 
