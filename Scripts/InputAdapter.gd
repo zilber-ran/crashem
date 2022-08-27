@@ -1,29 +1,48 @@
-extends Control
+extends Object
+class_name InputAdapter
 
-var pos1 = Vector2.ZERO
-var pos2 = Vector2.ZERO
+enum EVENT_SOURCE_TYPE {UI_SELECT, UI_CANCEL, UI_ACCEPT}
+const EVENT_SOURCE = {
+	EVENT_SOURCE_TYPE.UI_SELECT: "ui_select",
+	EVENT_SOURCE_TYPE.UI_CANCEL: "ui_cancel",
+	EVENT_SOURCE_TYPE.UI_ACCEPT: "ui_accept",
+}
 
-func _notification(what):
-	match what:
-		NOTIFICATION_MOUSE_ENTER:
-			pass # Mouse entered the area of this control.
-		NOTIFICATION_MOUSE_EXIT:
-			pass # Mouse exited the area of this control.
-		NOTIFICATION_FOCUS_ENTER:
-			pass # Control gained focus.
-		NOTIFICATION_FOCUS_EXIT:
-			pass # Control lost focus.
-		NOTIFICATION_THEME_CHANGED:
-			pass # Theme used to draw the control changed;
-			# update and redraw is recommended if using a theme.
-		NOTIFICATION_VISIBILITY_CHANGED:
-			pass # Control became visible/invisible;
-			# check new status with is_visible().
-		NOTIFICATION_RESIZED:
-			pass # Control changed size; check new size
-			# with get_size().
-		NOTIFICATION_MODAL_CLOSE:
-			pass # For modal pop-ups, notification
-			# that the pop-up was closed.
-func _launch(Thrust):
+
+func _get_source(source_type):
+	if not source_type in EVENT_SOURCE:
+		printerr("Unkown source type: {}".format([source_type], "{}"))
+	return EVENT_SOURCE.get(source_type)
+
+func on_event(event): 
 	pass
+
+func on_press(event):
+	pass
+
+func on_release(event):
+	pass 
+	
+func on_drag(event):
+	pass
+
+func on_neutral(event):
+	pass
+			
+func handle_ui(event, source_type=EVENT_SOURCE.UI_SELECT):
+	if event.is_action_pressed(_get_source(source_type)):
+		on_event(event)
+
+func handle_mouse(event):
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			on_press(event)
+		else:
+			on_release(event)
+	if event is InputEventMouseMotion:
+		if event.is_pressed():
+			on_drag(event)
+	on_neutral(event)
+	
+
+	
