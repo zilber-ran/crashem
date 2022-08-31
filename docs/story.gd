@@ -19,10 +19,20 @@ Release(s) BackLog
 - Tower
 - GameDifficulties
 
+==
+CrawlerHole
+==
+- EnemySpawner (Balls?)
+- A per turn activity
+- Lifecycle: number of turns to live.
+- Cluster Size: the total amount of enemies created.
+- Visability: Yes/No
+- EnemyTypeMap will map a per level enemy types.
 
 ==
 Minimal Release
 ==
+()[R] CrawlerHole
 ()[R] Tower
 (/)[R] BasicBoard
 ()[M] BasicEnemy

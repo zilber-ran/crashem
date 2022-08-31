@@ -14,13 +14,13 @@ var parent = Node2D
 func _stop_slow() -> void:
 	curr_speed = abs(get_linear_velocity().length())
 	
-	print_debug("speed: {}".format([curr_speed], "{}"))
+	print("speed: {}".format([curr_speed], "{}"))
 	if curr_speed>0 and curr_speed <= stop_speed:
-		print_debug("[STOP-PLAYER]")
+		print("[STOP-PLAYER]")
 		set_linear_velocity(Vector2.ZERO)
 		VC.can_launch = true
 	else: 
-		print_debug("[CONT-PLAYER]")
+		print("[CONT-PLAYER]")
 func _process(delta):
 	_stop_slow()
 	
