@@ -23,5 +23,8 @@ func _on_mouse_entered():
 
 
 func _on_mouse_exited():
-	mouse_on_player = false
-	print("mouse outside")
+	if !mouse_on_player:
+		return
+	else:
+		mouse_on_player = false
+		print("mouse outside")
