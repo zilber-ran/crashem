@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Enemy_Factory.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/BasicPlayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/BallFactory.gd" type="Script" id=5]
 
@@ -11,12 +11,12 @@
 position = Vector2( 519.27, 232.093 )
 scale = Vector2( 1.004, 0.463 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 397.201, 219.275 )
-
 [node name="EnemyFactory" parent="." instance=ExtResource( 1 )]
 position = Vector2( 842.284, 88.0994 )
 
 [node name="BallFactory" type="Node2D" parent="."]
 position = Vector2( 269.051, 201.343 )
 script = ExtResource( 5 )
+
+[node name="BasicPlayer" parent="." instance=ExtResource( 2 )]
+position = Vector2( 500, 225 )

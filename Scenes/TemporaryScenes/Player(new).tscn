@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Player RB2D(New).gd" type="Script" id=1]
 [ext_resource path="res://player.png" type="Texture" id=2]
 
-[sub_resource type="PhysicsMaterial" id=1]
-friction = 20.0
-bounce = 30.0
-
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=1]
 radius = 5.55176
 
 [node name="Player" type="Node2D"]
@@ -16,7 +12,6 @@ position = Vector2( 500, 250 )
 [node name="Player RB2D" type="RigidBody2D" parent="."]
 collision_layer = 2
 collision_mask = 5
-physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
 script = ExtResource( 1 )
 
@@ -26,4 +21,4 @@ texture = ExtResource( 2 )
 
 [node name="Player ColisionShape" type="CollisionShape2D" parent="Player RB2D"]
 scale = Vector2( 5, 5 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )

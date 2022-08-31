@@ -5,7 +5,7 @@ extends SpawnFactory
 # var a = 2
 # var b = "text"
 func _ready():
-	load_scene("Enemy")
+	load_scene("BasicEnemy")
 
 
 

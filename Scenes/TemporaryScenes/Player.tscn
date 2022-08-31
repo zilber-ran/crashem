@@ -1,8 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player.png" type="Texture" id=1]
-[ext_resource path="res://Scenes/VectorCreator.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/TemporaryScenes/VectorCreator.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Player RB2D.gd" type="Script" id=3]
+
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 20.0
