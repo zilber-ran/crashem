@@ -23,18 +23,30 @@ _global_script_classes=[ {
 "class": "SpawnFactory",
 "language": "GDScript",
 "path": "res://Scripts/SpawnFactory.gd"
+}, {
+"base": "Object",
+"class": "ValueDistorter",
+"language": "GDScript",
+"path": "res://Scripts/ValueDistorter.gd"
+}, {
+"base": "ValueDistorter",
+"class": "enemy_valdistorter",
+"language": "GDScript",
+"path": "res://Scripts/enemy_valdistorter.gd"
 } ]
 _global_script_class_icons={
 "InputAdaptor": "",
 "PlayerInput": "",
-"SpawnFactory": ""
+"SpawnFactory": "",
+"ValueDistorter": "",
+"enemy_valdistorter": ""
 }
 
 [application]
 
 config/name="crashem"
 run/main_scene="res://Scenes/Main.tscn"
-config/icon="res://icon.png"
+config/icon="res://Art/icon.png"
 
 [input]
 
@@ -52,6 +64,7 @@ ui_touch={
 2d_physics/layer_4="Enemies"
 2d_physics/layer_5="Other"
 2d_physics/layer_6="UI"
+2d_physics/layer_7="Tower"
 
 [physics]
 

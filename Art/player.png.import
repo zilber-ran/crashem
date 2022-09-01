@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mcFace.png-e04a566657001b7082265f2835c3dfe3.stex"
+path="res://.import/player.png-f312c2b20749097671415ace428193ae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mcFace.png"
-dest_files=[ "res://.import/mcFace.png-e04a566657001b7082265f2835c3dfe3.stex" ]
+source_file="res://Art/player.png"
+dest_files=[ "res://.import/player.png-f312c2b20749097671415ace428193ae.stex" ]
 
 [params]
 
