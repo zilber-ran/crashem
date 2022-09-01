@@ -23,4 +23,4 @@ position = Vector2( 269.051, 201.343 )
 script = ExtResource( 5 )
 
 [node name="BasicPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 350, 225 )
+position = Vector2( 837.039, 291.071 )
