@@ -6,6 +6,12 @@ var scene = null
 ## support for property editor (optional)
 export(PackedScene) var scene_res_path
 
+func load_and_spawn(scene_name):
+	if not is_loaded():
+		load_scene(scene_name)
+	spawn()
+	
+
 func load_scene(scene_name):
 	"""
 	fast loading implementation. 
