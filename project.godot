@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "CrawlerHole",
+"language": "GDScript",
+"path": "res://Scripts/CrawlerHole.gd"
+}, {
+"base": "Object",
+"class": "GameFlowContext",
+"language": "GDScript",
+"path": "res://Scripts/game_context.gd"
+}, {
 "base": "Object",
 "class": "InputAdaptor",
 "language": "GDScript",
@@ -35,6 +45,8 @@ _global_script_classes=[ {
 "path": "res://Scripts/enemy_valdistorter.gd"
 } ]
 _global_script_class_icons={
+"CrawlerHole": "",
+"GameFlowContext": "",
 "InputAdaptor": "",
 "PlayerInput": "",
 "SpawnFactory": "",

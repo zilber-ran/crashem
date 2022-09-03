@@ -7,13 +7,14 @@ export var Difficulty := 1
 var VD = enemy_valdistorter.new()
 var wake = false
 var is_colliding = false
+var ctx = GameFlowContext.new()
 
 func setup(difficulty):
-	Difficulty = difficulty
+	var calc_diff = ctx.get_calculated_difficulty()
 	wake = false
-	Health = VD.calc_health(difficulty)
-	Speed = VD.calc_speed(difficulty)
-
+	Health = VD.calc_health(calc_diff)
+	Speed = VD.calc_speed(calc_diff)
+	
 func move() -> void:
 	pass
 
@@ -37,5 +38,6 @@ func _on_body_entered(body):
 
 
 func _on_body_exited(body):
-	if body.collision_mask == 2 || 3 :
+	if body.collision_mask ==  COLLISION_MASK.PLAYER || \
+		COLLISION_MASK.BALL :
 		is_colliding = false
