@@ -1,10 +1,10 @@
 extends RigidBody2D
 enum COLLISION_MASK {WALLS, PLAYER, BALL, ENEMIES}
 
-export var Health := 1
-export var Speed := 5
-export var Difficulty := 1
-var VD = enemy_valdistorter.new()
+export var health := 1
+export var speed := 5
+export var difficulty := 1
+var VD = EnemyDistorter.new()
 var wake = false
 var is_colliding = false
 var ctx = GameFlowContext.new()
@@ -12,15 +12,17 @@ var ctx = GameFlowContext.new()
 func setup(difficulty):
 	var calc_diff = ctx.get_calculated_difficulty()
 	wake = false
-	Health = VD.calc_health(calc_diff)
-	Speed = VD.calc_speed(calc_diff)
-	
+	health = VD.calc_health(calc_diff)
+	speed = VD.calc_speed(calc_diff)
+	self.difficulty = difficulty
+
+
 func move() -> void:
 	pass
 
 func attack() -> void:
 # warning-ignore:unused_variable
-	var dammage = VD.calc_dammage(Difficulty)
+	var dammage = VD.calc_dammage(difficulty)
 
 
 
@@ -32,7 +34,7 @@ func _on_body_entered(body):
 		is_colliding = true
 		print_debug("is player or ball")
 		
-		Health += -1
+		health += -1
 
 
 
