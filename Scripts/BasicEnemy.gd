@@ -4,15 +4,16 @@ enum COLLISION_MASK {WALLS, PLAYER, BALL, ENEMIES}
 export var health := 1
 export var speed := 5
 export var difficulty := 1
+var dammage :int
 var VD = EnemyDistorter.new()
 var wake = false
 var is_colliding = false
 var ctx = GameFlowContext.new()
 
 func setup(difficulty):
-	var calc_diff = ctx.get_calculated_difficulty()
+	var calc_diff = ctx.get_calculated_difficulty(difficulty)
 	wake = false
-	health = VD.calc_health(calc_diff)
+	health = VD.calc_health(difficulty)
 	speed = VD.calc_speed(calc_diff)
 	self.difficulty = difficulty
 
@@ -22,7 +23,7 @@ func move() -> void:
 
 func attack() -> void:
 # warning-ignore:unused_variable
-	var dammage = VD.calc_dammage(difficulty)
+	 dammage = VD.calc_dammage(difficulty)
 
 
 
