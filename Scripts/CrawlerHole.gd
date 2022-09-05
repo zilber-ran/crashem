@@ -35,6 +35,7 @@ func spawnm():
 	while size>0:
 		for type in types:
 			spawn_factory.load_and_spawn(type)
+			
 
 
 # Called when the node enters the scene tree for the first time.
