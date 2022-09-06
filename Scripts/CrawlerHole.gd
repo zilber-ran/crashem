@@ -6,6 +6,7 @@ export var radius : int = 500
 export var difficulty : int = 1
 var spawn_factory = SpawnFactory.new()
 var ctx = GameFlowContext.new()
+var logger = Logger.new()
 
 func set_radius(radius : int):
 	self.radius = radius
@@ -26,16 +27,21 @@ func random_position():
 	"""
 	angle = randi() % 360
 	position = Vector2(radius*cos(angle), radius*sin(angle))
-	print_debug("angle={}, pos={}".format([angle, position], "{}"))
+	logger.log_debug(logger.STATUS_PASSED, logger.format("CrollerHole random place: angle: {}, pos: {}", [angle, position]))
 	
 
-func spawnm():
-	var size = ctx.get_enemy_cluster_size(difficulty)
+func spawnem():
+#	var total = ctx.get_enemy_cluster_size(difficulty)
+	var total = 3
+	var counter = total
 	var types = ctx.get_enemy_types(difficulty)
-	while size>0:
+	var groups = ctx.get_enemy_groups()
+	spawn_factory.set_groups(groups)
+	while counter>0:
+		logger.log_debug(logger.STATUS_PASSED, logger.format("CrollerHole enemy creation {} of {}", [total-counter+1, total]))
 		for type in types:
-			spawn_factory.load_and_spawn(type)
-			
+			spawn_factory.load_and_spawn(type, position)
+		counter -= 1
 
 
 # Called when the node enters the scene tree for the first time.
@@ -43,6 +49,7 @@ func _ready():
 	randomize()
 	if not_positioned():
 		random_position()
+		spawnem()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

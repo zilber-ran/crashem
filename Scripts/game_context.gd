@@ -5,6 +5,9 @@ var ENEMY_TYPES_PER_DIFICULTY  = {
 	1 : ["E1", "E2"]
 }
 
+func get_enemy_groups():
+	return ["enemy"]
+	
 func get_enemy_types(difficulty:int):
 #	return ENEMY_TYPES_PER_DIFICULTY.get(difficulty, ["NA"])
 	return ["BasicEnemy"]

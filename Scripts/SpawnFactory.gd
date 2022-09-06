@@ -4,13 +4,18 @@ extends Node2D
 var scene = null
 
 ## support for property editor (optional)
-export(PackedScene) var scene_res_path
+export var scene_res_path : String = ""
+export var groups : Array = []
+var logger = Logger.new()
 
-func load_and_spawn(scene_name):
+func load_and_spawn(scene_name, pos):
 	if not is_loaded():
 		load_scene(scene_name)
-	spawn()
+		logger.log_debug(logger.STATUS_PASSED, logger.format("Loaded scene: {}", [scene_name]))
+	spawn(pos)
 	
+func set_groups(in_groups):
+	self.groups.append_array(in_groups)
 
 func load_scene(scene_name):
 	"""
@@ -24,10 +29,18 @@ func load_scene(scene_name):
 	
 func is_loaded():
 	return scene != null
-	 
-func spawn() -> void:
+
+func attach_groups(node):
+	if self.groups:
+			for grp in self.groups:
+				node.add_to_group(grp)
+				
+func spawn(pos) -> void:
 	if is_loaded():
 		var child = scene.instance()
+		child.position = pos
+		attach_groups(child)
+		logger.log_debug(logger.STATUS_PASSED, logger.format("Attached groups: {}", self.groups))
 		add_child(child)
 
 # Called when the node enters the scene tree for the first time.
