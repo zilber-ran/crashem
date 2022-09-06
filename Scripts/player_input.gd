@@ -11,9 +11,9 @@ func on_mouse_press(event):
 
 func on_mouse_release(event):
 	pos_released = event.get_global_position() 
-	print(pos_released)
+#	print(pos_released)
 	direction = pos_pressed - pos_released
-	print(direction)
+#	print(direction)
 #	mouse_reset()
 	
 func on_mouse_drag(event):

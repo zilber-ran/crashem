@@ -7,13 +7,20 @@ var stop_speed = 100
 var events = PlayerInput.new()
 var mouse_on_player = false
 export var speed = 0
+export var boost_multiplyer = 1
 
 
 
 func _input(event):
 	var mouse_event = events.handle_mouse(event);
-	if InputAdaptor.MOUSE_EVENT.RELEASE == mouse_event && mouse_on_player == true:
-		apply_impulse(Vector2.ZERO, events.direction*speed)
+	var boost : float
+	if InputAdaptor.MOUSE_EVENT.PRESS == mouse_event:
+		boost = get_linear_velocity().length()*boost_multiplyer
+		set_linear_velocity(Vector2.ZERO)
+		
+	elif InputAdaptor.MOUSE_EVENT.RELEASE == mouse_event && mouse_on_player == true:
+		apply_impulse(Vector2.ZERO, events.direction*speed + events.direction*boost)
+		print("boost is ", boost)
 		events.mouse_reset()
 
 func _stop_slow() -> void:
