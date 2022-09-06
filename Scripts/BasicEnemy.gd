@@ -1,4 +1,5 @@
-extends RigidBody2D
+extends KinematicBody2D
+class_name BasicEnemy
 enum COLLISION_MASK {WALLS, PLAYER, BALL, ENEMIES}
 
 export var health := 1
@@ -28,19 +29,19 @@ func attack() -> void:
 
 
 
-func _on_body_entered(body):
-	print_debug("contacted object")
-	if body.collision_mask ==  COLLISION_MASK.PLAYER || \
-		COLLISION_MASK.BALL && is_colliding == false:
-		is_colliding = true
-		print_debug("is player or ball")
-		
-		health += -1
-
-
-
-
-func _on_body_exited(body):
-	if body.collision_mask ==  COLLISION_MASK.PLAYER || \
-		COLLISION_MASK.BALL :
-		is_colliding = false
+#func _on_body_entered(body):
+#	print_debug("contacted object")
+#	if body.collision_mask ==  COLLISION_MASK.PLAYER || \
+#		COLLISION_MASK.BALL && is_colliding == false:
+#		is_colliding = true
+#		print_debug("is player or ball")
+#
+#		health += -1
+#
+#
+#
+#
+#func _on_body_exited(body):
+#	if body.collision_mask ==  COLLISION_MASK.PLAYER || \
+#		COLLISION_MASK.BALL :
+#		is_colliding = false
