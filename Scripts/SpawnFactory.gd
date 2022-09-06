@@ -8,11 +8,11 @@ export var scene_res_path : String = ""
 export var groups : Array = []
 var logger = Logger.new()
 
-func load_and_spawn(scene_name, pos):
+func load_and_spawn(scene_name):
 	if not is_loaded():
 		load_scene(scene_name)
 		logger.log_debug(logger.STATUS_PASSED, logger.format("Loaded scene: {}", [scene_name]))
-	spawn(pos)
+	return spawn()
 	
 func set_groups(in_groups):
 	self.groups.append_array(in_groups)
@@ -35,13 +35,13 @@ func attach_groups(node):
 			for grp in self.groups:
 				node.add_to_group(grp)
 				
-func spawn(pos) -> void:
+func spawn():
 	if is_loaded():
 		var child = scene.instance()
-		child.position = pos
 		attach_groups(child)
 		logger.log_debug(logger.STATUS_PASSED, logger.format("Attached groups: {}", self.groups))
 		add_child(child)
+		return child
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -10,7 +10,7 @@ func get_enemy_groups():
 	
 func get_enemy_types(difficulty:int):
 #	return ENEMY_TYPES_PER_DIFICULTY.get(difficulty, ["NA"])
-	return ["BasicEnemy"]
+	return ["KinematicEnemy"]
 
 func get_enemy_cluster_size(difficulty:int):
 	return 1

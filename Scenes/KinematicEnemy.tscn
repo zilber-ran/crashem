@@ -9,9 +9,7 @@ height = 9.2
 
 [sub_resource type="CapsuleShape2D" id=2]
 
-[node name="KinematicEnemy" type="KinematicBody2D" groups=[
-"Enemy",
-]]
+[node name="KinematicEnemy" type="KinematicBody2D" groups=["Enemy"]]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource( 2 )

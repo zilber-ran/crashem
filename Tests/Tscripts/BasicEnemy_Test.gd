@@ -1,12 +1,11 @@
 extends Node2D
 
-
-onready var enemys = get_tree().get_nodes_in_group("Enemy")
+onready var enemies = get_tree().get_nodes_in_group("Enemy")
 export var difficulty :int = 5
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
-		for enemy in enemys:
+		for enemy in enemies:
 			enemy.setup(difficulty)
 			print("=========")
 			print("difficulty ",difficulty)
