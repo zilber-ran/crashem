@@ -6,7 +6,8 @@ onready var timer = get_node("Timer")
 
 "move randomly"
 func _physics_process(delta):
-	move_and_slide(move_direction)
+	if is_wake:
+		move_and_slide(move_direction)
 	
 
 func _on_Timer_timeout():
@@ -20,4 +21,4 @@ func _on_Collision_body_entered(body):
 
 func _on_setup_called(_difficulty):
 	setup(_difficulty)
-	timer.wait_time = VD.distort(_difficulty)
+	timer.set_wait_time(VD.calc_timer(calc_diff))

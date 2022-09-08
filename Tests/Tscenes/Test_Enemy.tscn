@@ -1,17 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/BasicPlayer.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/BasicEnemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/KinematicEnemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Tests/Tscripts/BasicEnemy_Test.gd" type="Script" id=4]
 
 [node name="Test Enemy" type="Node2D"]
 script = ExtResource( 4 )
-
-[node name="BasicEnemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 534.878, 85.026 )
-mode = 3
-mass = 0.01
 
 [node name="BasicPlayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 434.182, 347.345 )

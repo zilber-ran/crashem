@@ -1,14 +1,13 @@
 extends SpawnFactory
 class_name CrawlerHole
 
-export var angle :int = -1
-export var radius : int = 500
+export var pos_radius : int = 500
+export var spawn_radius : int = 50
 export var difficulty : int = 1
-#var spawn_factory = SpawnFactory.new()
+export var cluster_size :int = 3
 var vd = ValueDistorter.new()
 var ctx = GameFlowContext.new()
-var center_board = Vector2(500, 300)
-#var logger = Logger.new()
+var center_board = Vector2(0, 0)
 
 func set_radius(radius : int):
 	self.radius = radius
@@ -27,16 +26,13 @@ func random_position(center):
 	"""
 	sets  a random position
 	"""
-#	angle = randi() % 360
-#	position = Vector2(radius*cos(angle), radius*sin(angle))
-#	logger.log_debug(logger.STATUS_PASSED, logger.format("CrollerHole random place: angle: {}, pos: {}", [angle, position]))
-	position = center + vd.distort_vector2_Wlength(50)
+	position = center + vd.distort_vector2_Wlength(pos_radius)
 	logger.log_debug(logger.STATUS_PASSED, logger.format("CrollerHole random pos: {}", [position]))
 	
 
 func spawnem():
 #	var total = ctx.get_enemy_cluster_size(difficulty)
-	var total = 3
+	var total = cluster_size
 	var counter = total
 	var types = ctx.get_enemy_types(difficulty)
 	var groups = ctx.get_enemy_groups()
@@ -46,19 +42,15 @@ func spawnem():
 		logger.log_debug(logger.STATUS_PASSED, logger.format("CrollerHole enemy creation {} of {}", [total-counter+1, total]))
 		for type in types:
 			enemy = load_and_spawn(type)
-			enemy.position = vd.distort_vector2_Wlength(50)
+			enemy.position = vd.distort_vector2_Wlength(spawn_radius)
 			enemy.setup(difficulty)
 		counter -= 1
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	randomize()
+#	randomize()
 	if not_positioned():
 		random_position(center_board)
 	spawnem()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
