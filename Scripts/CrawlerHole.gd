@@ -1,21 +1,15 @@
 extends SpawnFactory
 class_name CrawlerHole
 
-export var pos_radius : int = 500
-export var spawn_radius : int = 50
-export var difficulty : int = 1
-export var cluster_size :int = 3
 var vd = ValueDistorter.new()
 var ctx = GameFlowContext.new()
-var center_board = Vector2(0, 0)
 
-func set_radius(radius : int):
-	self.radius = radius
-	 
-func set_position(pos : Vector2):
-	if pos:
-		position = pos
-		
+export var pos_radius : int = ctx.get_crawler_holes_pos_radius()
+export var spawn_radius : int = ctx.get_crawler_holes_spawn_radius()
+export var difficulty : int = ctx.difficulty
+export var cluster_size :int = ctx.get_enemy_cluster_size()
+export var player_position :Vector2 = Vector2.ZERO
+
 func is_positioned():
 	return position != Vector2.ZERO
 
@@ -31,26 +25,28 @@ func random_position(center):
 	
 
 func spawnem():
-#	var total = ctx.get_enemy_cluster_size(difficulty)
-	var total = cluster_size
-	var counter = total
-	var types = ctx.get_enemy_types(difficulty)
+	var cluster_size = ctx.get_enemy_cluster_size()
+	var counter = cluster_size
+	var types = ctx.get_enemy_types()
 	var groups = ctx.get_enemy_groups()
 	var enemy = null
 	set_groups(groups)
 	while counter>0:
-		logger.log_debug(logger.STATUS_PASSED, logger.format("CrollerHole enemy creation {} of {}", [total-counter+1, total]))
+		logger.log_debug(logger.STATUS_PASSED, logger.format("CrollerHole enemy creation {} of {}", [cluster_size-counter+1, cluster_size]))
 		for type in types:
 			enemy = load_and_spawn(type)
 			enemy.position = vd.distort_vector2_Wlength(spawn_radius)
-			enemy.setup(difficulty)
+#			enemy.setup(difficulty)
 		counter -= 1
 
-
 # Called when the node enters the scene tree for the first time.
-func _ready():
-#	randomize()
-	if not_positioned():
-		random_position(center_board)
-	spawnem()
+#func _ready():
+#	if not_positioned():
+#		random_position(player_position)
+#	spawnem()
 
+func activate(in_player_position):
+	player_position = in_player_position
+	if not_positioned():
+		random_position(player_position)
+	spawnem()

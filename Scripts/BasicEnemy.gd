@@ -11,7 +11,7 @@ var is_wake = true
 var ctx = GameFlowContext.new()
 
 func setup(difficulty):
-	calc_diff = ctx.get_calculated_difficulty(difficulty)
+	calc_diff = ctx.get_calculated_difficulty()
 	is_wake = true
 	health = VD.calc_health(difficulty)
 	speed = VD.calc_speed(calc_diff)
