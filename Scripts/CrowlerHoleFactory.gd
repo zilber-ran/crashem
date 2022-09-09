@@ -13,7 +13,7 @@ var crawler_holes = []
 func _physics_process(delta):
 	var expected_holes = ctx.get_total_crawler_holes()
 	while crawler_holes.size() < expected_holes:
-		var hole = CrawlerHole.new()
+		var hole = load_and_spawn("CrawlerHole")
 		crawler_holes.append(hole)
 		logger.log_debug(logger.STATUS_PASSED, logger.format("CrollerHole creation {} of {}", [crawler_holes.size(), expected_holes]))
 		hole.activate(get_player_position())

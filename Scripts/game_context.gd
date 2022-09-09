@@ -28,7 +28,7 @@ func get_total_crawler_holes():
 	return self.get_calculated_difficulty()+3
 
 func get_crawler_holes_pos_radius():
-	return 70
+	return 500
 
 func get_crawler_holes_spawn_radius():
 	return 50
