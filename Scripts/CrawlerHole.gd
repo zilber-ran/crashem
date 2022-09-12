@@ -4,8 +4,8 @@ class_name CrawlerHole
 var vd = ValueDistorter.new()
 var ctx = GameFlowContext.new()
 
-export var pos_radius : int = ctx.get_crawler_holes_pos_radius()
-export var spawn_radius : int = ctx.get_crawler_holes_spawn_radius()
+export var pos_radius : int = ctx.get_crawler_holes_pos_radius() #Should be from own script
+export var spawn_radius : int = ctx.get_crawler_holes_spawn_radius() #Should be from own script
 export var difficulty : int = ctx.difficulty
 export var cluster_size :int = ctx.get_enemy_cluster_size()
 export var player_position :Vector2 = Vector2.ZERO

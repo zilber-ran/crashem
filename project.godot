@@ -75,7 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="crashem"
-run/main_scene="res://Scenes/Main.tscn"
+run/main_scene="res://Scenes/Game.tscn"
 config/icon="res://Art/icon.png"
 
 [input]
