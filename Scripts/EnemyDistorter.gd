@@ -3,8 +3,8 @@ class_name EnemyDistorter
 
 
 var health_multiplyer : int = 1
-var speed_multiplyer : int = 5
-var timer_multiplyer : int = 0.5
+var speed_multiplyer : int = 25
+var timer_multiplyer : int = 1
 
 func calc_health(difficulty):
 	var ans = round_distort(difficulty*health_multiplyer)

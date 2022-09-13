@@ -15,3 +15,5 @@ scale = Vector2( 3, 3 )
 
 [node name="CrawlerHoleFactory" type="Node2D" parent="."]
 script = ExtResource( 2 )
+
+[connection signal="player_launched" from="BasicPlayer" to="." method="_on_player_launched"]

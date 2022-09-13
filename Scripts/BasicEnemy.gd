@@ -10,6 +10,8 @@ var VD = EnemyDistorter.new()
 var is_wake = true
 var ctx = GameFlowContext.new()
 
+onready var timer = get_node("Timer")
+
 func setup(difficulty):
 	calc_diff = ctx.get_calculated_difficulty()
 	is_wake = true

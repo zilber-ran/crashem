@@ -1,13 +1,18 @@
 extends BasicEnemy
 
 var move_direction := Vector2.ZERO
-onready var timer = get_node("Timer")
+
 
 
 "move randomly"
 func _physics_process(delta):
-	if is_wake:
+	var estimated_location = move_direction+ position
+	var board_size = float(ctx.board_size)
+	if -board_size < estimated_location.x && estimated_location.x < board_size && \
+	-board_size < estimated_location.y && estimated_location.y < board_size:
 		move_and_slide(move_direction)
+	else:
+		move_and_slide(-position.normalized()*speed)
 	
 
 func _on_Timer_timeout():

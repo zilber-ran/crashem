@@ -4,6 +4,8 @@ var mouse_pos = Vector2.ZERO
 var curr_speed = Vector2.ZERO
 var stop_speed = 100
 
+signal player_launched
+
 var events = PlayerInput.new()
 var mouse_on_player = false
 export var speed = 0
@@ -22,6 +24,7 @@ func _input(event):
 		apply_impulse(Vector2.ZERO, events.direction*speed + events.direction*boost)
 		print("boost is ", boost)
 		events.mouse_reset()
+		emit_signal("player_launched")
 
 func _stop_slow() -> void:
 	curr_speed = abs(get_linear_velocity().length())

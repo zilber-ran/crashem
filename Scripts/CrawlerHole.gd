@@ -36,7 +36,7 @@ func spawnem():
 		for type in types:
 			enemy = load_and_spawn(type)
 			enemy.position = vd.distort_vector2_Wlength(spawn_radius)
-#			enemy.setup(difficulty)
+			enemy._on_setup_called(difficulty)
 		counter -= 1
 
 # Called when the node enters the scene tree for the first time.
@@ -47,6 +47,5 @@ func spawnem():
 
 func activate(in_player_position):
 	player_position = in_player_position
-	if not_positioned():
-		random_position(player_position)
+	random_position(player_position)
 	spawnem()
