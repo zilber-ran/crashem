@@ -12,6 +12,7 @@ script = ExtResource( 1 )
 scale = Vector2( 3, 3 )
 
 [node name="BasicPlayer" parent="." instance=ExtResource( 3 )]
+position = Vector2( -1162, -31 )
 
 [node name="CrawlerHoleFactory" type="Node2D" parent="."]
 script = ExtResource( 2 )
