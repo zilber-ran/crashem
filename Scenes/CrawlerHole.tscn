@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/CrawlerHole.gd" type="Script" id=1]
 [ext_resource path="res://Art/crawlerhole.png" type="Texture" id=2]
 
-[node name="CralwerHole" type="Node2D"]
+[node name="CralwerHole" type="Node2D" groups=["CrawlerHole"]]
 script = ExtResource( 1 )
 difficulty = 4
 
