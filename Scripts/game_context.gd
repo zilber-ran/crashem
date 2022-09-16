@@ -50,9 +50,7 @@ onready var temp_node2d = Node2D.new()
 func _process(var delta):
 	var enemy_count = 0
 	enemys = get_tree().get_nodes_in_group("Enemy")
-	for enemy in enemys:
-		enemy_count += 1
-	if enemy_count == 0:
+	if enemys.size() == 0:
 		next_game_level()
 
 
@@ -97,7 +95,7 @@ func get_crawler_holes_spawn_radius():
 func calculate_player_launches() -> void:
 	var remaning_launches = max_player_launches-current_player_launches
 #	max_player_launches = PLAYER_LAUNCHES_PER_LEVEL[level]
-	if remaning_launches >> 0:
+	if remaning_launches > 0:
 		max_player_launches += remaning_launches
 	reset_player_launches()
 

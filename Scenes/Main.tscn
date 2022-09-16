@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/CrowlerHoleFactory.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/BasicPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/game_context.gd" type="Script" id=4]
+
+[node name="Main" type="Node2D"]
+
+[node name="Board" parent="." instance=ExtResource( 3 )]
+scale = Vector2( 3, 3 )
+
+[node name="BasicPlayer" parent="." instance=ExtResource( 2 )]
+
+[node name="CrawlerHoleFactory" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="GameContext" type="Node" parent="."]
+script = ExtResource( 4 )
