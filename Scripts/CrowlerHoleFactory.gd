@@ -7,7 +7,7 @@ func get_player_position() -> Vector2:
 	return player.position
 
 var vd = ValueDistorter.new()
-var ctx = GameFlowContext.new()
+onready var ctx = get_parent()
 var crawler_holes = []
 
 func _physics_process(delta):
