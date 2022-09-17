@@ -37,7 +37,7 @@ var current_player_launches : int
 var max_player_launches : int
 var enemys
 
-var board_size = 1250
+var board_size = 500
 
 onready var temp_node2d = Node2D.new()
 
