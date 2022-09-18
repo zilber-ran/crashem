@@ -7,19 +7,39 @@ onready var raycast = get_node("RayCast2D")
 
 "move randomly"
 func _physics_process(delta):
-	var estimated_location = move_direction+ position
-	raycast.set_cast_to(move_direction*timer.wait_time)
+	var chosen_dir = _verify_movement()
+	move_and_slide(chosen_dir)
+	raycast.set_cast_to(chosen_dir.normalized()*1.5*speed)
+	move_direction = chosen_dir
+
+func _verify_movement():
+	var md :Vector2 = move_direction
+	if _verify(md):
+		return md
+	else:
+		if _verify(Vector2(-md.x,md.y)):
+			return Vector2(-md.x,md.y)
+		elif _verify(Vector2(md.x,-md.y)):
+			return Vector2(md.x,-md.y)
+		else:
+			return -md
+
+
+func _verify(vector):
+	raycast.set_cast_to(vector*timer.wait_time)
 	if raycast.is_colliding():
 		var body = raycast.get_collider()
 		if body.is_in_group("Walls"):
-			move_and_slide(-position*speed)
-			return
+			return false
 	else:
-		move_and_slide(move_direction)
+		return true
 
+
+func _random_direction():
+	return VD.distort_vector2_Wlength(speed)
 
 func _on_Timer_timeout():
-	move_direction = VD.distort_vector2_Wlength(speed)
+	move_direction = _random_direction()
 	#print(move_direction)
 
 "kills on contact"
