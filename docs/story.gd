@@ -44,4 +44,14 @@ Minimal Release
 ()[M] Sounds
 ()[R] Release
 
+
+==
+Animation
+==
+- blender tutorial:
+	https://www.youtube.com/watch?v=hcTb07V2Zgk
+	
+
 """
+
+
