@@ -7,7 +7,12 @@ onready var raycast = get_node("RayCast2D")
 
 "move randomly"
 func _physics_process(delta):
+	var sprite = get_node("Sprite")
 	var chosen_dir = _verify_movement()
+	if chosen_dir.x < 0:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
 	move_and_slide(chosen_dir)
 	raycast.set_cast_to(chosen_dir.normalized()*1.5*speed)
 	move_direction = chosen_dir
