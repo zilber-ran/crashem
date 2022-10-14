@@ -17,27 +17,34 @@ func is_positioned():
 
 func not_positioned():
 	return not is_positioned()
+
+func is_pos_inside_board(estimeted_pos:Vector2):
+	if -board_size < estimeted_pos.x && estimeted_pos.x < board_size && \
+	-board_size < estimeted_pos.y && estimeted_pos.y < board_size:
+		return true
+	return false
 	
 func random_position(center):
 	"""
 	sets  a random position
 	"""
 	var estimeted_pos = center + vd.distort_vector2_Wlength(pos_radius)
-	if -board_size < estimeted_pos.x && estimeted_pos.x < board_size && \
-	-board_size < estimeted_pos.y && estimeted_pos.y < board_size:
+	if is_pos_inside_board(estimeted_pos):
 		position = estimeted_pos
 		logger.log_debug(logger.STATUS_PASSED, logger.format("CrollerHole random pos: {}", [position]))
 		return
+	#recursive
 	else: random_position(center)
 
 func create_enemy(type):
 	var estimated_pos = vd.distort_vector2_Wlength(spawn_radius)
 	var enemy = null
-	if -board_size < estimated_pos.x && estimated_pos.x < board_size && \
-	   -board_size < estimated_pos.y && estimated_pos.y < board_size:
+	if is_pos_inside_board(estimated_pos):
 			enemy = load_and_spawn(type)
 			enemy.position = estimated_pos
 			enemy._on_setup_called(difficulty)
+	#recursive
+	else: create_enemy(type)
 
 func rotate_next_enemy_type(types):
 	var type = types.pop_back()

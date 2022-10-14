@@ -15,7 +15,7 @@ func _physics_process(delta):
 		escape_dir = Vector2(self.position - player.position)
 		escape_dir_varified = _verify(escape_dir)
 	if escape_dir_varified:
-		_flip_sprite(escape_dir.x)
+#		_flip_sprite(escape_dir.x)
 		move_and_slide(escape_dir.normalized()*4*speed)
 	else:
 		var chosen_dir = _verify_movement()
