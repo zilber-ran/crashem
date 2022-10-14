@@ -30,23 +30,33 @@ func random_position(center):
 		return
 	else: random_position(center)
 
+func create_enemy(type):
+	var estimated_pos = vd.distort_vector2_Wlength(spawn_radius)
+	var enemy = null
+	if -board_size < estimated_pos.x && estimated_pos.x < board_size && \
+	   -board_size < estimated_pos.y && estimated_pos.y < board_size:
+			enemy = load_and_spawn(type)
+			enemy.position = estimated_pos
+			enemy._on_setup_called(difficulty)
+
+func rotate_next_enemy_type(types):
+	var type = types.pop_back()
+	types.insert(0, type)
+	return type
+	
 func spawnem():
 	var cluster_size = ctx.get_enemy_cluster_size()
 	var counter = cluster_size
 	var types = ctx.get_enemy_types()
 	var groups = ctx.get_enemy_groups()
-	var enemy = null
+	
 	set_groups(groups)
 	while counter>0:
 		logger.log_debug(logger.STATUS_PASSED, logger.format("CrollerHole enemy creation {} of {}", [cluster_size-counter+1, cluster_size]))
 		for type in types:
-			var estimated_pos = vd.distort_vector2_Wlength(spawn_radius)
-			if -board_size < estimated_pos.x && estimated_pos.x < board_size && \
-	-board_size < estimated_pos.y && estimated_pos.y < board_size:
-				enemy = load_and_spawn(type)
-				enemy.position = estimated_pos
-				enemy._on_setup_called(difficulty)
-				counter -= 1
+			logger.log_debug(logger.STATUS_PASSED, logger.format("CrollerHole enemy creation type: {}", [type]))
+			create_enemy(type)
+		counter -= 1
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():

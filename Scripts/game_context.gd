@@ -66,8 +66,8 @@ func get_enemy_groups():
 	
 func get_enemy_types():
 #	return ENEMY_TYPES_PER_DIFICULTY.get(difficulty, ["NA"])
-	return ["RedWizard","BlueWizard"]
-
+	return ["RedWizard", "BlueWizard"]
+	
 func _should_incr_difficulty():
 	return (level%2) > 0
 	
